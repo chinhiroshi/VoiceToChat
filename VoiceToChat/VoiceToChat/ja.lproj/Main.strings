@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Send"; ObjectID = "5Fs-na-i6f"; */
+"5Fs-na-i6f.text" = "Send";
+
+/* Class = "UILabel"; text = "Buy premium feature "; ObjectID = "7LU-gX-rcO"; */
+"7LU-gX-rcO.text" = "Buy premium feature ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8Zk-rT-W1r"; */
+"8Zk-rT-W1r.text" = "Label";
+
+/* Class = "UILabel"; text = "eng"; ObjectID = "CF4-pN-Bes"; */
+"CF4-pN-Bes.text" = "eng";
+
+/* Class = "UILabel"; text = "Change size"; ObjectID = "CT2-u3-QaD"; */
+"CT2-u3-QaD.text" = "Change size";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Hck-Qk-XnR"; */
+"Hck-Qk-XnR.text" = "Label";
+
+/* Class = "UILabel"; text = "Speech to text language"; ObjectID = "JyC-0d-65L"; */
+"JyC-0d-65L.text" = "Speech to text language";
+
+/* Class = "UILabel"; text = "eng"; ObjectID = "L4o-hN-6VX"; */
+"L4o-hN-6VX.text" = "eng";
+
+/* Class = "UILabel"; text = "Contact"; ObjectID = "SD6-iw-4qM"; */
+"SD6-iw-4qM.text" = "Contact";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V62-vd-H1F"; */
+"V62-vd-H1F.text" = "Label";
+
+/* Class = "UILabel"; text = "Sentence recognition"; ObjectID = "dAb-m1-D7f"; */
+"dAb-m1-D7f.text" = "Sentence recognition";
+
+/* Class = "UITextView"; text = "Hi"; ObjectID = "nwS-SB-6nU"; */
+"nwS-SB-6nU.text" = "Hi";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pvI-d0-efd"; */
+"pvI-d0-efd.text" = "Label";
+
+/* Class = "UILabel"; text = "Change language"; ObjectID = "ukt-fQ-WvQ"; */
+"ukt-fQ-WvQ.text" = "Change language";
+
+/* Class = "UILabel"; text = "Helps"; ObjectID = "we8-AF-kSq"; */
+"we8-AF-kSq.text" = "Helps";
+
+
+"Test" = "Test56789";

@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  VoiceToChat
+ 
+  Created by Shree on 07/04/20.
+  Copyright © 2020 Shree. All rights reserved.
+*/
+
+//Settings screen
+"Speech to text language" = "スピーチからテキスト言語";
+"Change language" = "言語を変えてください";
+"Sentence recognition" = "文の認識";
+"Contact" = "連絡先";
+"Helps" = "ヘルプ";
+"Buy premium feature" = "プレミアム機能を購入";
+"Please select language" = "言語を選択してください";
+"Cancel" = "キャンセル";
+"Please select language for speech to text" = "スピーチからテキストへの言語を選択してください";
+
+//Chat screen
+"Change size" = "サイズを変更";
+
+//User List
+"Save" = "保存する";
+"Username" = "ユーザー名";
+"Enter username" = "ユーザーネームを入力してください";

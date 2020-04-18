@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  VoiceToChat
+
+  Created by Shree on 07/04/20.
+  Copyright © 2020 Shree. All rights reserved.
+*/
+
+//Settings screen
+"Speech to text language" = "Speech to text language";
+"Change language" = "Change language";
+"Sentence recognition" = "Sentence recognition";
+"Contact" = "Contact";
+"Helps" = "Helps";
+"Buy premium feature" = "Buy premium feature";
+"Please select language" = "Please select language";
+"Cancel" = "Cancel";
+"Please select language for speech to text" = "Please select language for speech to text";
+
+//Chat screen
+"Change size" = "Change size";
+
+//User List
+"Save" = "Save";
+"Username" = "Username";
+"Enter username" = "Enter username";
