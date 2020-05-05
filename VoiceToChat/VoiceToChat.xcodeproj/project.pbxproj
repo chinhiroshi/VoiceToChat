@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1514A6CC8516B5607D73D8 /* Pods_VoiceToChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EED3A6F3217237ACB9AA2A /* Pods_VoiceToChat.framework */; };
 		F41307BC243765FD0003AEF0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307BB243765FD0003AEF0 /* StringExtension.swift */; };
 		F41307BF243774310003AEF0 /* YMUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307BE243774310003AEF0 /* YMUserDefault.swift */; };
 		F41307C1243774D80003AEF0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307C0243774D70003AEF0 /* Constant.swift */; };
@@ -35,6 +36,7 @@
 		F4653F8E243BB60B00FA120E /* OpenMeasurement-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4653F89243BB60A00FA120E /* OpenMeasurement-LICENSE */; };
 		F4653F8F243BB60B00FA120E /* GoogleUtilities-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4653F8A243BB60A00FA120E /* GoogleUtilities-LICENSE */; };
 		F4653F90243BB60B00FA120E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4653F8B243BB60A00FA120E /* nanopb.framework */; };
+		F469070B245AEB58004014C0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469070A245AEB58004014C0 /* UserInfo.swift */; };
 		F47FF6762434A84A00C4C379 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FF6752434A84A00C4C379 /* SettingsVC.swift */; };
 		F48DAA85243B06A400EEADD9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48DAA84243B06A200EEADD9 /* MessageUI.framework */; };
 		F4E90030243B901D00F6CBEE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E9002F243B901D00F6CBEE /* AVFoundation.framework */; };
@@ -46,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38FF70C00B82954E616B01C8 /* Pods-VoiceToChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceToChat.release.xcconfig"; path = "Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat.release.xcconfig"; sourceTree = "<group>"; };
+		94EED3A6F3217237ACB9AA2A /* Pods_VoiceToChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceToChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E4C258958FFEC1F9596EC7 /* Pods-VoiceToChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceToChat.debug.xcconfig"; path = "Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat.debug.xcconfig"; sourceTree = "<group>"; };
 		F41307BB243765FD0003AEF0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		F41307BE243774310003AEF0 /* YMUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMUserDefault.swift; sourceTree = "<group>"; };
 		F41307C0243774D70003AEF0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -82,7 +87,10 @@
 		F4653F89243BB60A00FA120E /* OpenMeasurement-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMeasurement-LICENSE"; sourceTree = "<group>"; };
 		F4653F8A243BB60A00FA120E /* GoogleUtilities-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GoogleUtilities-LICENSE"; sourceTree = "<group>"; };
 		F4653F8B243BB60A00FA120E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
+		F469070A245AEB58004014C0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F47FF6752434A84A00C4C379 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		F48076F8245A925B00191816 /* SwiftMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F48076FF245A92F500191816 /* SwiftMessages.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SwiftMessages.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48DAA84243B06A200EEADD9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F4E9002F243B901D00F6CBEE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F4E90031243B902400F6CBEE /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -107,12 +115,22 @@
 				F4653F83243BB30200FA120E /* GoogleMobileAds.framework in Frameworks */,
 				F4653F85243BB60000FA120E /* GoogleAppMeasurement.framework in Frameworks */,
 				F4E90030243B901D00F6CBEE /* AVFoundation.framework in Frameworks */,
+				4F1514A6CC8516B5607D73D8 /* Pods_VoiceToChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DB41DC91E292C1C09912201 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4E4C258958FFEC1F9596EC7 /* Pods-VoiceToChat.debug.xcconfig */,
+				38FF70C00B82954E616B01C8 /* Pods-VoiceToChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F41307BD243774270003AEF0 /* YMUserDefault */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +192,7 @@
 				F41DC2AE24346AC6008BB1C1 /* DBHelper */,
 				F41DC2A424344C9F008BB1C1 /* Extension */,
 				F41307C0243774D70003AEF0 /* Constant.swift */,
+				F469070A245AEB58004014C0 /* UserInfo.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -194,6 +213,8 @@
 		F41DC2A924346AAE008BB1C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F48076FF245A92F500191816 /* SwiftMessages.bundle */,
+				F48076F8245A925B00191816 /* SwiftMessages.framework */,
 				F4653F86243BB60A00FA120E /* GoogleUtilities.framework */,
 				F4653F87243BB60A00FA120E /* Licenses */,
 				F4653F8B243BB60A00FA120E /* nanopb.framework */,
@@ -207,6 +228,7 @@
 				F41DC2AD24346ABD008BB1C1 /* libsqlite3.tbd */,
 				F41DC2AC24346AB6008BB1C1 /* libsqlite3.0.tbd */,
 				F41DC2AA24346AAE008BB1C1 /* Foundation.framework */,
+				94EED3A6F3217237ACB9AA2A /* Pods_VoiceToChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,6 +247,7 @@
 				F425564E243397CB0002D209 /* VoiceToChat */,
 				F425564D243397CB0002D209 /* Products */,
 				F41DC2A924346AAE008BB1C1 /* Frameworks */,
+				1DB41DC91E292C1C09912201 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,9 +318,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4255663243397CD0002D209 /* Build configuration list for PBXNativeTarget "VoiceToChat" */;
 			buildPhases = (
+				5E5DBC6936DB39D091E9F244 /* [CP] Check Pods Manifest.lock */,
 				F4255648243397CB0002D209 /* Sources */,
 				F4255649243397CB0002D209 /* Frameworks */,
 				F425564A243397CB0002D209 /* Resources */,
+				13B32BBBB4CF568D3AA09602 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,6 +384,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13B32BBBB4CF568D3AA09602 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E5DBC6936DB39D091E9F244 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoiceToChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F4255648243397CB0002D209 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -372,6 +439,7 @@
 				F4255654243397CB0002D209 /* ChatVC.swift in Sources */,
 				F4442BDC243B5DE200C37B62 /* RippleLayer.swift in Sources */,
 				F41DC2B224346C18008BB1C1 /* DateExtension.swift in Sources */,
+				F469070B245AEB58004014C0 /* UserInfo.swift in Sources */,
 				F41DC2A624344CB2008BB1C1 /* UIImageViewExtension.swift in Sources */,
 				F425565A243397CB0002D209 /* VoiceToChat.xcdatamodeld in Sources */,
 				F4653F81243BB24E00FA120E /* GoogleAdsMob.swift in Sources */,
@@ -539,6 +607,7 @@
 		};
 		F4255664243397CD0002D209 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4E4C258958FFEC1F9596EC7 /* Pods-VoiceToChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroshi Chin (3RX2RWFJJ4)";
@@ -565,6 +634,7 @@
 		};
 		F4255665243397CD0002D209 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38FF70C00B82954E616B01C8 /* Pods-VoiceToChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroshi Chin (3RX2RWFJJ4)";

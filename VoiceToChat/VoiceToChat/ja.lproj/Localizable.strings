@@ -16,6 +16,8 @@
 "Please select language" = "言語を選択してください";
 "Cancel" = "キャンセル";
 "Please select language for speech to text" = "スピーチからテキストへの言語を選択してください";
+"Done" = "終わった";
+"seconds" = "秒";
 
 //Chat screen
 "Change size" = "サイズを変更";

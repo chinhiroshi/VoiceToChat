@@ -12,6 +12,9 @@ import UIKit
 var currentUser = ModelUserList.init(strUserName: "", userId: 0)
 var strContactEmail = "hiroshi.chin@gmail.com"
 
+//MARK: - App Name
+var appName = "Voice To Chat"
+
 
 var hasTopNotch: Bool {
     if #available(iOS 13.0,  *) {
@@ -25,4 +28,13 @@ var isIphoneXOrLonger: Bool {
     // 812.0 / 375.0 on iPhone X, XS.
     // 896.0 / 414.0 on iPhone XS Max, XR.
     return UIScreen.main.bounds.height / UIScreen.main.bounds.width >= 896.0 / 414.0
+}
+
+//MARK: - Screen Size
+struct ScreenSize {
+    
+    static let width         = UIScreen.main.bounds.size.width
+    static let height        = UIScreen.main.bounds.size.height
+    static let SCREEN_MAX_LENGTH    = max(ScreenSize.width, ScreenSize.height)
+    static let SCREEN_MIN_LENGTH    = min(ScreenSize.width, ScreenSize.height)
 }

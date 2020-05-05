@@ -32,6 +32,7 @@ class ChatVC: UIViewController {
     
     @IBOutlet var lblChangeSize: UILabel!
     
+    
     //TODO: - Variable Declaration
     var arrChatList = [ModelChat]()
     var arrAllChatData = [ModelChatWithDate]()
@@ -52,12 +53,14 @@ class ChatVC: UIViewController {
     var strSpeechTextParssed = ""
     var timerSpeechToText:Timer!
     
-    let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    var speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     var recognitionRequest      : SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask         : SFSpeechRecognitionTask?
     let audioEngine             = AVAudioEngine()
     
     var heightBannerView = 0
+    var secondsForSendMessage = 3
+    var timerForSendMessage = Timer()
     
     //TODO: - Override Method
     override func viewDidLoad() {
@@ -76,6 +79,28 @@ class ChatVC: UIViewController {
         super.viewWillAppear(animated)
         
         lblChangeSize.text = "Change size".localizeString()
+        
+        secondsForSendMessage = UserInfo.sharedInstance.getSentencesRecognization()
+        if secondsForSendMessage == 0 {
+           secondsForSendMessage = 3
+        }
+        
+        let strLang = UserDefaults.Main.string(forKey: .speechToTextLanguage)
+        self.speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: strLang))
+        //Setup Speech
+        self.setupSpeech()
+        
+        //Start Recording
+        self.startRecording()
+        self.isRecordingStart = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isRecordingStart == true {
+            self.stopRecording()
+            self.isRecordingStart = false
+        }
     }
     func prepareUI() {
         
@@ -91,9 +116,11 @@ class ChatVC: UIViewController {
         controlVoiceBG.layer.cornerRadius = 23
         
         //Ripple Layer
-        rippleLayer.position = CGPoint(x: viewRippleAnimationBG.layer.bounds.midX, y: viewRippleAnimationBG.layer.bounds.midY);
+        /*rippleLayer.position = CGPoint(x: ScreenSize.width/2, y: ScreenSize.height/2.5);
         viewRippleAnimationBG.layer.addSublayer(rippleLayer)
-        rippleLayer.zPosition = 1000
+        rippleLayer.zPosition = 1000*/
+        
+        controlSendMessage.isHidden = true
     }
     func prepareData() {
         
@@ -105,10 +132,8 @@ class ChatVC: UIViewController {
         //Relaod Chat Data
         self.relaodChatData(isScrollToBottom: true)
         
-        //Setup Speech
-        self.setupSpeech()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.bannerAdsReceived(notification:)), name: Notification.Name("bannerAdsReceived"), object: nil)
+        
     }
     func updateFontSize() {
         
@@ -120,6 +145,10 @@ class ChatVC: UIViewController {
         isKeyboardOpen = false
         controlHideKeyboard.isHidden = true
         constraintBottomSafeArea.constant = 0
+        
+        if txtMessage.textColor == colorTextMessagePlaceholder {
+            self.controlSendMessage.isHidden = true
+        }
     }
     func relaodChatData(isScrollToBottom:Bool) {
         
@@ -159,7 +188,12 @@ class ChatVC: UIViewController {
         
         if strMessage.length > 0 {
             
-            txtMessage.text = ""
+            if isKeyboardOpen == false {
+                controlSendMessage.isHidden = true
+            }
+            
+            txtMessage.text = strMessagePlaceholder
+            txtMessage.textColor = colorTextMessagePlaceholder
             
             let dateFormatter : DateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -201,6 +235,7 @@ class ChatVC: UIViewController {
         
         NotificationCenter.default.post(name: Notification.Name("changeAppOrientation"), object: nil)
     }
+
     func setKeyboardHeight() {
         var isPortrait = true
         switch UIDevice.current.orientation {
@@ -317,6 +352,7 @@ class ChatVC: UIViewController {
         
         self.setKeyboardHeight()
     }
+    
 }
 //MARK: - Tapped Event
 extension ChatVC {
@@ -375,21 +411,25 @@ extension ChatVC {
     }
     @IBAction func tappedOnChangeOrientation(_ sender: Any) {
         
+        UIView.setAnimationsEnabled(false)
+        //UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        
         switch UIDevice.current.orientation {
         case .portrait:
             let value = UIInterfaceOrientation.landscapeLeft.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             break
-        case .portraitUpsideDown:
-            let value = UIInterfaceOrientation.landscapeLeft.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-            break
         case .landscapeLeft:
+            let value = UIInterfaceOrientation.portraitUpsideDown.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        break
+        case .portraitUpsideDown:
             let value = UIInterfaceOrientation.portrait.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             break
+        
         case .landscapeRight:
-            let value = UIInterfaceOrientation.portrait.rawValue
+            let value = UIInterfaceOrientation.portraitUpsideDown.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             break
         default:
@@ -397,6 +437,7 @@ extension ChatVC {
             UIDevice.current.setValue(value, forKey: "orientation")
             break
         }
+        UIView.setAnimationsEnabled(true)
     }
 }
 
@@ -535,6 +576,8 @@ extension ChatVC:UITextViewDelegate {
             //When textview is not empty
             textView.textColor = colorTextMessage
             textView.text = text
+            
+            controlSendMessage.isHidden = false
 
         } else {
 
@@ -542,7 +585,7 @@ extension ChatVC:UITextViewDelegate {
                 //Update Send Message Box
                 self.updateSendMessageBox()
             })
-
+            controlSendMessage.isHidden = false
             return true
         }
 
@@ -729,6 +772,12 @@ extension ChatVC: SFSpeechRecognizerDelegate {
     }
     
     func setSpokeWord(updatedText:String) {
+        if self.timerSpeechToText != nil {
+            
+            self.timerSpeechToText.invalidate()
+        }
+        
+        timerSpeechToText = Timer.scheduledTimer(timeInterval: TimeInterval(secondsForSendMessage), target: self, selector: #selector(timerActionForSendMessage), userInfo: nil, repeats: false)
         
         if self.isRecordingStart {
             
@@ -747,6 +796,7 @@ extension ChatVC: SFSpeechRecognizerDelegate {
                 //When textview is not empty
                 txtMessage.textColor = colorTextMessage
                 txtMessage.text = strMessage
+                
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
@@ -755,4 +805,10 @@ extension ChatVC: SFSpeechRecognizerDelegate {
             })
         }
     }
+    @objc func timerActionForSendMessage() {
+        
+        //Send Message
+        self.sendMessage()
+    }
 }
+

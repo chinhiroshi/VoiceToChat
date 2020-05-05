@@ -138,7 +138,6 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
                 NotificationCenter.default.post(name: Notification.Name("bannerAdsReceived"), object: nil)
                 
                 self.bannerView.isHidden = false
-                self.bannerView.isUserInteractionEnabled = true
                 let screenHeight = BannerViewSize.screenHeight > BannerViewSize.screenWidth ? BannerViewSize.screenHeight : BannerViewSize.screenWidth
                 let screenWidth = BannerViewSize.screenHeight > BannerViewSize.screenWidth ? BannerViewSize.screenWidth : BannerViewSize.screenHeight
                 
@@ -163,7 +162,6 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
         print("hideBannerView")
         isBannerViewDisplay = false
         if self.bannerView != nil {
-            self.bannerView.isUserInteractionEnabled = false
             UserDefaults.Main.set(false, forKey: .isShowBannerAds)
             UserDefaults.standard.synchronize()
             
@@ -179,7 +177,6 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
         print("showBanner")
         if self.bannerView != nil && isBannerViewDisplay == true {
             self.bannerView.isHidden = false
-            self.bannerView.isUserInteractionEnabled = true
             
             UserDefaults.Main.set(true, forKey: .isShowBannerAds)
             UserDefaults.standard.synchronize()
@@ -192,7 +189,6 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
         print("hideBanner")
         if self.bannerView != nil {
             self.bannerView.isHidden = true
-            self.bannerView.isUserInteractionEnabled = false
             
             UserDefaults.Main.set(false, forKey: .isShowBannerAds)
             UserDefaults.standard.synchronize()
