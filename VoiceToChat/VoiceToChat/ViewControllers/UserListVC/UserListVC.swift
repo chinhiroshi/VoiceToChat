@@ -58,6 +58,7 @@ class UserListVC: UIViewController {
 //        print("\("Test1".localizeString(language: "ja"))")
 //        print("========================")
     }
+    
     func reloadUserData(isScrollToBottom:Bool) {
         self.arrUserList.removeAll()
         self.arrUserList = self.db.readUserInfo()
@@ -131,11 +132,11 @@ class UserListVC: UIViewController {
                         constraintHeightBannerAds.constant = 50
                     } else {
                         if isIphoneXOrLonger == true {
-                            heightBannerView = 0
-                            constraintHeightBannerAds.constant = 0
+                            heightBannerView = 50
+                            constraintHeightBannerAds.constant = 50
                         } else {
-                            heightBannerView = 0
-                            constraintHeightBannerAds.constant = 0
+                            heightBannerView = 50
+                            constraintHeightBannerAds.constant = 50
                         }
                     }
                 } else {
