@@ -12,8 +12,8 @@ struct GoogleAdsUnitID {
     
     //Google Live admob Unit ID
     struct Live {
-        static var strBannerAdsID = "ca-app-pub-3940256099942544/2934735716"
-        static var strInterstitialAdsID = "ca-app-pub-3940256099942544/4411468910"
+        static var strBannerAdsID = googleAdMobBanner
+        static var strInterstitialAdsID = ""
     }
 }
 
@@ -85,7 +85,9 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
             self.bannerView.rootViewController = UIApplication.shared.keyWindow?.rootViewController
             self.bannerView.delegate = self
             self.bannerView.backgroundColor = .clear
-            self.bannerView.load(GADRequest())
+            let request: GADRequest = GADRequest()
+            request.testDevices = [(kGADSimulatorID as! String),"7a861149e93466099173f96506660d15"]
+            self.bannerView.load(request)
             self.bannerView.isUserInteractionEnabled = false
             UIApplication.shared.keyWindow?.addSubview(bannerView)
             
@@ -174,14 +176,18 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
     }
     @objc private func showBanner() {
 
-        print("showBanner")
-        if self.bannerView != nil && isBannerViewDisplay == true {
-            self.bannerView.isHidden = false
+        let isProductPurchased = IAPManager.shared.isProductPurchased(productId: strInAppPurchase)
+        if isProductPurchased == false {
             
-            UserDefaults.Main.set(true, forKey: .isShowBannerAds)
-            UserDefaults.standard.synchronize()
-            
-            NotificationCenter.default.post(name: Notification.Name("bannerAdsReceived"), object: nil)
+            print("showBanner")
+            if self.bannerView != nil && isBannerViewDisplay == true {
+                self.bannerView.isHidden = false
+                
+                UserDefaults.Main.set(true, forKey: .isShowBannerAds)
+                UserDefaults.standard.synchronize()
+                
+                NotificationCenter.default.post(name: Notification.Name("bannerAdsReceived"), object: nil)
+            }
         }
     }
     private func hideBanner() {

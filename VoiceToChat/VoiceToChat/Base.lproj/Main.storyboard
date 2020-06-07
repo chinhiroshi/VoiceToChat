@@ -358,7 +358,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auc-ab-sSs">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="245"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLo-Lh-mhC" customClass="UIControl">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
@@ -538,12 +538,24 @@
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBu-1e-pfB">
+                                                                <rect key="frame" x="294" y="0.0" width="100" height="45"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="100" id="Ey1-g3-HhE"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="qBu-1e-pfB" secondAttribute="trailing" constant="20" id="7AJ-R3-hoN"/>
                                                             <constraint firstItem="q9b-x0-9w2" firstAttribute="leading" secondItem="oxK-5f-gUk" secondAttribute="leading" constant="20" id="ABY-rD-acH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="qBu-1e-pfB" secondAttribute="bottom" id="GqC-8r-3NC"/>
                                                             <constraint firstAttribute="bottom" secondItem="q9b-x0-9w2" secondAttribute="bottom" id="S5I-wK-d7Z"/>
                                                             <constraint firstAttribute="height" constant="45" id="apd-Sa-P7M"/>
+                                                            <constraint firstItem="qBu-1e-pfB" firstAttribute="top" secondItem="oxK-5f-gUk" secondAttribute="top" id="dEo-lY-GE5"/>
                                                             <constraint firstItem="7LU-gX-rcO" firstAttribute="top" secondItem="oxK-5f-gUk" secondAttribute="top" id="eIT-oq-8cA"/>
                                                             <constraint firstAttribute="trailing" secondItem="q9b-x0-9w2" secondAttribute="trailing" constant="20" id="h7l-NL-mef"/>
                                                             <constraint firstAttribute="trailing" secondItem="7LU-gX-rcO" secondAttribute="trailing" constant="100" id="nla-tn-qd3"/>
@@ -554,10 +566,41 @@
                                                             <action selector="tappedOnBuyPremiumFeatures:" destination="15r-mh-Uho" eventType="touchUpInside" id="5PU-xT-fcs"/>
                                                         </connections>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-SR-84k" customClass="UIControl">
+                                                        <rect key="frame" x="0.0" y="225" width="414" height="45"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QF3-Bp-7bQ">
+                                                                <rect key="frame" x="20" y="44" width="374" height="1"/>
+                                                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="Bbz-uu-4Kh"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Purchses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ6-XH-6Zz">
+                                                                <rect key="frame" x="20" y="0.0" width="294" height="45"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="LJ6-XH-6Zz" secondAttribute="trailing" constant="100" id="2Py-h4-bv2"/>
+                                                            <constraint firstAttribute="trailing" secondItem="QF3-Bp-7bQ" secondAttribute="trailing" constant="20" id="4eD-o6-4it"/>
+                                                            <constraint firstItem="QF3-Bp-7bQ" firstAttribute="leading" secondItem="sNQ-SR-84k" secondAttribute="leading" constant="20" id="Ajk-63-N4I"/>
+                                                            <constraint firstItem="LJ6-XH-6Zz" firstAttribute="leading" secondItem="sNQ-SR-84k" secondAttribute="leading" constant="20" id="G9c-mr-kw3"/>
+                                                            <constraint firstAttribute="bottom" secondItem="QF3-Bp-7bQ" secondAttribute="bottom" id="GWz-z1-W75"/>
+                                                            <constraint firstAttribute="bottom" secondItem="LJ6-XH-6Zz" secondAttribute="bottom" id="NTh-GK-8Jt"/>
+                                                            <constraint firstAttribute="height" constant="45" id="bg9-6u-1IZ"/>
+                                                            <constraint firstItem="LJ6-XH-6Zz" firstAttribute="top" secondItem="sNQ-SR-84k" secondAttribute="top" id="xpl-ql-xo2"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="tappedOnRestorePurchse:" destination="15r-mh-Uho" eventType="touchUpInside" id="1Sh-pg-1Op"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="oxK-5f-gUk" secondAttribute="bottom" constant="20" id="0Lh-Jg-r30"/>
                                                     <constraint firstItem="QLo-Lh-mhC" firstAttribute="leading" secondItem="auc-ab-sSs" secondAttribute="leading" id="3LV-36-yJc"/>
                                                     <constraint firstItem="QLo-Lh-mhC" firstAttribute="top" secondItem="auc-ab-sSs" secondAttribute="top" id="6HP-zb-9nN"/>
                                                     <constraint firstItem="sf1-iP-WHv" firstAttribute="top" secondItem="fIJ-ca-inO" secondAttribute="bottom" id="AsC-p5-KMa"/>
@@ -566,12 +609,16 @@
                                                     <constraint firstAttribute="trailing" secondItem="QLo-Lh-mhC" secondAttribute="trailing" id="FdY-Qr-oTu"/>
                                                     <constraint firstAttribute="trailing" secondItem="oxK-5f-gUk" secondAttribute="trailing" id="JQe-wh-lps"/>
                                                     <constraint firstAttribute="trailing" secondItem="CMK-2B-ewZ" secondAttribute="trailing" id="ZfE-4e-01z"/>
+                                                    <constraint firstItem="sNQ-SR-84k" firstAttribute="top" secondItem="oxK-5f-gUk" secondAttribute="bottom" id="a0x-RJ-216"/>
                                                     <constraint firstItem="oxK-5f-gUk" firstAttribute="leading" secondItem="auc-ab-sSs" secondAttribute="leading" id="dA2-y5-2Ew"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sNQ-SR-84k" secondAttribute="trailing" id="f3f-e5-rjc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sNQ-SR-84k" secondAttribute="bottom" constant="20" id="hmc-VG-Fgb"/>
                                                     <constraint firstItem="oxK-5f-gUk" firstAttribute="top" secondItem="CMK-2B-ewZ" secondAttribute="bottom" id="iWf-i9-lWG"/>
                                                     <constraint firstItem="fIJ-ca-inO" firstAttribute="top" secondItem="QLo-Lh-mhC" secondAttribute="bottom" id="ivZ-s0-pov"/>
                                                     <constraint firstItem="CMK-2B-ewZ" firstAttribute="leading" secondItem="auc-ab-sSs" secondAttribute="leading" id="kZa-0W-2ad"/>
                                                     <constraint firstItem="fIJ-ca-inO" firstAttribute="leading" secondItem="auc-ab-sSs" secondAttribute="leading" id="lE6-oD-ryQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="fIJ-ca-inO" secondAttribute="trailing" id="tBy-3I-T5C"/>
+                                                    <constraint firstItem="sNQ-SR-84k" firstAttribute="leading" secondItem="auc-ab-sSs" secondAttribute="leading" id="w1d-ZX-bJs"/>
                                                     <constraint firstItem="CMK-2B-ewZ" firstAttribute="top" secondItem="sf1-iP-WHv" secondAttribute="bottom" id="xOZ-cN-eAE"/>
                                                 </constraints>
                                             </view>
@@ -674,11 +721,15 @@
                         <outlet property="btnDone" destination="mFc-cT-q6M" id="baR-7D-7sv"/>
                         <outlet property="constraintHeightBottomView" destination="gbr-TN-zE4" id="X1W-Fr-R2C"/>
                         <outlet property="constraintHeightPickerNumber" destination="9Qy-iL-H0h" id="MXh-Lt-Sdp"/>
+                        <outlet property="controlBuyPremiumFeature" destination="oxK-5f-gUk" id="YeB-P7-NmK"/>
+                        <outlet property="controlRestorePurchse" destination="sNQ-SR-84k" id="BlW-ua-c6c"/>
+                        <outlet property="lblBuyPremiumFeature" destination="7LU-gX-rcO" id="LH2-2d-RQO"/>
                         <outlet property="lblBuyPremiumFeatures" destination="7LU-gX-rcO" id="cMv-0Q-Uz5"/>
                         <outlet property="lblChangeLanguage" destination="ukt-fQ-WvQ" id="ebN-1y-keu"/>
                         <outlet property="lblContact" destination="SD6-iw-4qM" id="m4k-to-dDR"/>
                         <outlet property="lblLangChange" destination="L4o-hN-6VX" id="qIy-81-uAI"/>
                         <outlet property="lblLangSpeechToText" destination="CF4-pN-Bes" id="CQK-Zp-bRm"/>
+                        <outlet property="lblPriceBuyPremiumFeature" destination="qBu-1e-pfB" id="Zj5-Gh-pYW"/>
                         <outlet property="lblSentenceRecognition" destination="dAb-m1-D7f" id="h2t-5P-Ncq"/>
                         <outlet property="lblSentenceRecognitionCounter" destination="JRH-61-UDd" id="YM1-Zi-u26"/>
                         <outlet property="lblSpeechToText" destination="JyC-0d-65L" id="fwM-Ql-3oE"/>
@@ -1002,7 +1053,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                                                        <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="1g1-6T-DcD" id="iaJ-jY-RdU"/>
                                                         </connections>

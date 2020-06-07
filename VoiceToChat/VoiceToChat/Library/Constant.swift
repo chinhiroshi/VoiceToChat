@@ -12,6 +12,10 @@ import UIKit
 var currentUser = ModelUserList.init(strUserName: "", userId: 0)
 var strContactEmail = "hiroshi.chin@gmail.com"
 
+var strInAppPurchase = "com.voicetochat.voicetochat.full"
+
+var googleAdMobBanner = "ca-app-pub-7265780855429088/7725027997"
+
 //MARK: - App Name
 var appName = "Voice To Chat"
 

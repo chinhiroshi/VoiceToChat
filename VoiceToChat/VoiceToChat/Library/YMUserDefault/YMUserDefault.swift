@@ -158,12 +158,14 @@ extension UserDefaults {
         
         enum IntegerDefaultKey: String {
             case intKey
+            case int_chat_counter
         }
         
         enum StringDefaultKey: String {
             case stringKey
             case changeLanguage
             case speechToTextLanguage
+            case last_date
         }
         
         enum URLDefaultKey: String {

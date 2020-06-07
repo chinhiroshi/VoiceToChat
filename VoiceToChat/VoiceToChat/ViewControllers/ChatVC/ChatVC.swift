@@ -188,35 +188,43 @@ class ChatVC: UIViewController {
         
         if strMessage.length > 0 {
             
-            if isKeyboardOpen == false {
-                controlSendMessage.isHidden = true
-            }
-            
-            txtMessage.text = strMessagePlaceholder
-            txtMessage.textColor = colorTextMessagePlaceholder
-            
-            let dateFormatter : DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            let date = Date()
-            let strDate = dateFormatter.string(from: date)
-            
-            dateFormatter.dateFormat = "hh:mm a"
-            let strTime = dateFormatter.string(from: date)
-            
-            //Insert Chat Info
-            db.insertChatInfo(data: ModelChat.init(messageId: 0, strMessage: strMessage, strDate: strDate, strTime: strTime), userId: userDetails.userId)
-            
-            //Relaod Chat Data
-            self.relaodChatData(isScrollToBottom: true)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                //Update Send Message Box
-                self.updateSendMessageBox()
-            })
-            
-            if self.isRecordingStart {
-                //Setup Speech
-                self.setupSpeech()
+            if self.isUserCanSendMessage() {
+             
+                if isKeyboardOpen == false {
+                    controlSendMessage.isHidden = true
+                }
+                
+                txtMessage.text = strMessagePlaceholder
+                txtMessage.textColor = colorTextMessagePlaceholder
+                
+                let dateFormatter : DateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                let date = Date()
+                let strDate = dateFormatter.string(from: date)
+                
+                dateFormatter.dateFormat = "hh:mm a"
+                let strTime = dateFormatter.string(from: date)
+                
+                //Insert Chat Info
+                db.insertChatInfo(data: ModelChat.init(messageId: 0, strMessage: strMessage, strDate: strDate, strTime: strTime), userId: userDetails.userId)
+                
+                //Relaod Chat Data
+                self.relaodChatData(isScrollToBottom: true)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    //Update Send Message Box
+                    self.updateSendMessageBox()
+                })
+                
+                if self.isRecordingStart {
+                    //Setup Speech
+                    self.setupSpeech()
+                }
+                
+            } else {
+                
+                //Show Alert For Warning
+                self.showAlertForWarning()
             }
         }
     }
@@ -352,7 +360,53 @@ class ChatVC: UIViewController {
         
         self.setKeyboardHeight()
     }
-    
+    func showAlertForWarning() {
+        let alert = UIAlertController(title: "Buy Premium Feature", message: "You can't send morethan 50 messages on single day, If you have yo send unlimited messages and remove ads, Please buy premium feature", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
+            //Cancel Action
+        }))
+        alert.addAction(UIAlertAction(title: "Settings",
+                                      style: UIAlertAction.Style.default,
+                                      handler: {(_: UIAlertAction!) in
+                                        
+                                        //Redirect To Settings Screen
+                                        self.redirectToSettingsScreen()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func isUserCanSendMessage() -> Bool {
+        
+        let isProductPurchased = IAPManager.shared.isProductPurchased(productId: strInAppPurchase)
+        if isProductPurchased {
+            return true
+        } else {
+            
+            let strLastDate = UserDefaults.Main.string(forKey: .last_date)
+            let chatCounter = UserDefaults.Main.integer(forKey: .int_chat_counter)
+            
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            let str_current_date = formatter.string(from: date)
+            
+            if strLastDate == str_current_date && chatCounter < 50 {
+                
+                UserDefaults.Main.set((chatCounter+1), forKey: .int_chat_counter)
+                return true
+                
+            } else if strLastDate != str_current_date {
+                       
+                UserDefaults.Main.set(str_current_date, forKey: .last_date)
+                UserDefaults.Main.set(1, forKey: .int_chat_counter)
+                
+                return true
+            } else {
+                self.showAlertForWarning()
+                return false
+            }
+        }
+    }
 }
 //MARK: - Tapped Event
 extension ChatVC {

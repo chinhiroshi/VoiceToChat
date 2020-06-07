@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import IAPurchaseManager
 
 //MARK: - Settings View Controller
 class SettingsVC: UIViewController {
@@ -22,6 +23,12 @@ class SettingsVC: UIViewController {
     @IBOutlet var lblSentenceRecognition: UILabel!
     @IBOutlet var lblSentenceRecognitionCounter: UILabel!
     
+    @IBOutlet var controlRestorePurchse: UIControl!
+    
+    @IBOutlet var controlBuyPremiumFeature: UIControl!
+    @IBOutlet var lblPriceBuyPremiumFeature: UILabel!
+    @IBOutlet var lblBuyPremiumFeature: UILabel!
+    
     @IBOutlet var constraintHeightBottomView: NSLayoutConstraint!
     
     @IBOutlet var lblContact: UILabel!
@@ -34,6 +41,7 @@ class SettingsVC: UIViewController {
     //TODO: - Variable Declaration
     var arrSentenceNumber:[Int] = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     var secondsForSpeechRecognization = 3
+    var loaderView: LoaderView?
     
     //TODO: - Override Methods
     override func viewDidLoad() {
@@ -84,7 +92,51 @@ class SettingsVC: UIViewController {
             self.constraintHeightBottomView.constant = 50
         }
         
+        self.lblPriceBuyPremiumFeature.text = ""
+        IAPManager.shared.loadProducts(productIds: [strInAppPurchase]) { (products, error) -> Void in
+            if error != nil {
+                
+            } else {
+                if let product = products?.first {
+                    // Get its price from iTunes Connect
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.formatterBehavior = .behavior10_4
+                    numberFormatter.numberStyle = .currency
+                    numberFormatter.locale = product.priceLocale
+                    if let price = numberFormatter.string(from: product.price) {
+                        self.lblPriceBuyPremiumFeature.text = String(describing: price)
+                    }
+                }
+            }
+        }
         
+        //Check Purchse Feature
+        self.checkPurchseFeature()
+    }
+    func checkPurchseFeature() {
+        let isProductPurchased = IAPManager.shared.isProductPurchased(productId: strInAppPurchase)
+        if isProductPurchased {
+            
+            controlRestorePurchse.alpha = 0.4
+            controlRestorePurchse.isUserInteractionEnabled = false
+            
+            controlBuyPremiumFeature.alpha = 0.4
+            controlBuyPremiumFeature.isUserInteractionEnabled = false
+            lblBuyPremiumFeature.text = "Purchsed premium feature".localizeString()
+            
+            //Hide Banner View
+            GoogleAdMob.sharedInstance.hideBannerView()
+            
+        } else {
+            print("isProductPurchased : NO")
+            
+            controlRestorePurchse.alpha = 1.0
+            controlRestorePurchse.isUserInteractionEnabled = true
+            
+            controlBuyPremiumFeature.alpha = 1.0
+            controlBuyPremiumFeature.isUserInteractionEnabled = true
+            lblBuyPremiumFeature.text = "Buy premium feature".localizeString()
+        }
     }
     @objc func bannerAdsReceived(notification: Notification) {
         
@@ -274,6 +326,39 @@ extension SettingsVC {
     }
     @IBAction func tappedOnBuyPremiumFeatures(_ sender: Any) {
         
+        showLoaderView(with: "")
+        IAPManager.shared.purchaseProduct(productId: strInAppPurchase) { (error) -> Void in
+            if error == nil {
+                print("successful purchase!")
+            } else {
+                print("something wrong..")
+                print(error ?? "NIL")
+            }
+            
+            //Check Purchse Feature
+            self.checkPurchseFeature()
+            
+            //Hide Loader
+            self.hideLoader()
+        }
+    }
+    @IBAction func tappedOnRestorePurchse(_ sender: Any) {
+        
+        showLoaderView(with: "")
+        IAPManager.shared.restoreCompletedTransactions { (error) in
+            print("error : ",error ?? "NIL")
+            if error != nil {
+                
+            } else {
+                
+            }
+            
+            //Check Purchse Feature
+            self.checkPurchseFeature()
+            
+            //Hide Loader
+            self.hideLoader()
+        }
     }
 }
 //MARK: - Redirect To Next Screen
@@ -307,5 +392,20 @@ extension SettingsVC:UIPickerViewDelegate, UIPickerViewDataSource {
         self.lblSentenceRecognitionCounter.text = "\(self.arrSentenceNumber[row]) " + "seconds".localizeString()
         UserInfo.sharedInstance.setSentencesRecognization(data: self.arrSentenceNumber[row])
         secondsForSpeechRecognization = row
+    }
+}
+// MARK: - Show / Hide loader for purchase and restore
+extension SettingsVC {
+    func showLoaderView(with title:String) {
+        loaderView = LoaderView.instanceFromNib()
+        loaderView?.lblLoaderTitle.text = title
+        loaderView?.frame = self.view.frame
+        self.view.addSubview(loaderView!)
+    }
+
+    func hideLoader() {
+        if loaderView != nil {
+            loaderView?.removeFromSuperview()
+        }
     }
 }

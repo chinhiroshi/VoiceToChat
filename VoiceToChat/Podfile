@@ -7,4 +7,5 @@ target 'VoiceToChat' do
 
   # Pods for VoiceToChat
   pod 'SwiftMessages'
+  pod 'IAPurchaseManager'
 end

@@ -17,10 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Memory Initialize Ads View
-        GoogleAdMob.sharedInstance.initializeInterstitial(isLiveUnitID: false)
-        GoogleAdMob.sharedInstance.initializeBannerView(isLiveUnitID: false)
-        
         let strLang = UserDefaults.Main.string(forKey: .changeLanguage)
         if strLang.count == 0 {
             let deviceLanguage = Locale.current.languageCode ?? "en"
@@ -50,6 +46,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.Main.set(false, forKey: .isBannerAdsReceived)
         UserDefaults.standard.synchronize()
         
+        let strLastDate = UserDefaults.Main.string(forKey: .last_date)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let str_current_date = formatter.string(from: date)
+        if strLastDate.count == 0 {
+            
+            UserDefaults.Main.set(str_current_date, forKey: .last_date)
+            UserDefaults.Main.set(0, forKey: .int_chat_counter)
+            
+        } else if strLastDate != str_current_date {
+            
+            UserDefaults.Main.set(str_current_date, forKey: .last_date)
+            UserDefaults.Main.set(0, forKey: .int_chat_counter)
+        }
+        
         if #available(iOS 13, *) {
             // use the feature only available in iOS 9
             // for ex. UIStackView
@@ -58,8 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //Memory Initialize Ads View
-        GoogleAdMob.sharedInstance.initializeInterstitial(isLiveUnitID: false)
-        GoogleAdMob.sharedInstance.initializeBannerView(isLiveUnitID: false)
+        //GoogleAdMob.sharedInstance.initializeInterstitial(isLiveUnitID: false)
+        GoogleAdMob.sharedInstance.initializeBannerView(isLiveUnitID: true)
         
         return true
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import StoreKit
+import IAPurchaseManager
 
 //MARK: - User List View Controller
 class UserListVC: UIViewController {
@@ -23,6 +25,7 @@ class UserListVC: UIViewController {
     var arrUserList = [ModelUserList]()
     var db:DBHelper = DBHelper()
     
+    
     var heightBannerView = 0
     
     //TODO: - Override Method
@@ -34,6 +37,10 @@ class UserListVC: UIViewController {
         
         //Prepare Data
         self.prepareData()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     func prepareUI() {
         
@@ -52,12 +59,8 @@ class UserListVC: UIViewController {
         self.checkDeviceOrientation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.bannerAdsReceived(notification:)), name: Notification.Name("bannerAdsReceived"), object: nil)
-        
-//        print("========================")
-//        print("\("Test1".localizeString(language: "en"))")
-//        print("\("Test1".localizeString(language: "ja"))")
-//        print("========================")
     }
+    
     
     func reloadUserData(isScrollToBottom:Bool) {
         self.arrUserList.removeAll()
@@ -163,6 +166,7 @@ extension UserListVC {
         
         //Redirect To Settings Screen
         self.redirectToSettingsScreen()
+        
     }
     @IBAction func tappedOnMinus(_ sender: Any) {
         

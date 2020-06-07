@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F1514A6CC8516B5607D73D8 /* Pods_VoiceToChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EED3A6F3217237ACB9AA2A /* Pods_VoiceToChat.framework */; };
+		F40BC27C2486B29500AC6EBE /* LoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F40BC27A2486B29500AC6EBE /* LoaderView.xib */; };
+		F40BC27D2486B29500AC6EBE /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40BC27B2486B29500AC6EBE /* LoaderView.swift */; };
 		F41307BC243765FD0003AEF0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307BB243765FD0003AEF0 /* StringExtension.swift */; };
 		F41307BF243774310003AEF0 /* YMUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307BE243774310003AEF0 /* YMUserDefault.swift */; };
 		F41307C1243774D80003AEF0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41307C0243774D70003AEF0 /* Constant.swift */; };
@@ -37,8 +39,11 @@
 		F4653F8F243BB60B00FA120E /* GoogleUtilities-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4653F8A243BB60A00FA120E /* GoogleUtilities-LICENSE */; };
 		F4653F90243BB60B00FA120E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4653F8B243BB60A00FA120E /* nanopb.framework */; };
 		F469070B245AEB58004014C0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469070A245AEB58004014C0 /* UserInfo.swift */; };
+		F472BB1C2485196C00CB6F19 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472BB1B2485196C00CB6F19 /* IAPManager.swift */; };
 		F47FF6762434A84A00C4C379 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FF6752434A84A00C4C379 /* SettingsVC.swift */; };
 		F48DAA85243B06A400EEADD9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48DAA84243B06A200EEADD9 /* MessageUI.framework */; };
+		F4A7F929247B76A10062DD62 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7F928247B76A10062DD62 /* StoreKit.framework */; };
+		F4A7F92B247BF4180062DD62 /* IAP_ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A7F92A247BF4180062DD62 /* IAP_ProductIDs.plist */; };
 		F4E90030243B901D00F6CBEE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E9002F243B901D00F6CBEE /* AVFoundation.framework */; };
 		F4E90032243B902400F6CBEE /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E90031243B902400F6CBEE /* AVKit.framework */; };
 		F4E90034243B903000F6CBEE /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E90033243B903000F6CBEE /* Speech.framework */; };
@@ -51,6 +56,8 @@
 		38FF70C00B82954E616B01C8 /* Pods-VoiceToChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceToChat.release.xcconfig"; path = "Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat.release.xcconfig"; sourceTree = "<group>"; };
 		94EED3A6F3217237ACB9AA2A /* Pods_VoiceToChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceToChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E4C258958FFEC1F9596EC7 /* Pods-VoiceToChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceToChat.debug.xcconfig"; path = "Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat.debug.xcconfig"; sourceTree = "<group>"; };
+		F40BC27A2486B29500AC6EBE /* LoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoaderView.xib; sourceTree = "<group>"; };
+		F40BC27B2486B29500AC6EBE /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		F41307BB243765FD0003AEF0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		F41307BE243774310003AEF0 /* YMUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMUserDefault.swift; sourceTree = "<group>"; };
 		F41307C0243774D70003AEF0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -88,10 +95,14 @@
 		F4653F8A243BB60A00FA120E /* GoogleUtilities-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GoogleUtilities-LICENSE"; sourceTree = "<group>"; };
 		F4653F8B243BB60A00FA120E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		F469070A245AEB58004014C0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F472BB142485165400CB6F19 /* IAPurchaseManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IAPurchaseManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F472BB1B2485196C00CB6F19 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		F47FF6752434A84A00C4C379 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		F48076F8245A925B00191816 /* SwiftMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48076FF245A92F500191816 /* SwiftMessages.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SwiftMessages.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48DAA84243B06A200EEADD9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F4A7F928247B76A10062DD62 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F4A7F92A247BF4180062DD62 /* IAP_ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IAP_ProductIDs.plist; sourceTree = "<group>"; };
 		F4E9002F243B901D00F6CBEE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F4E90031243B902400F6CBEE /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		F4E90033243B903000F6CBEE /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
@@ -108,6 +119,7 @@
 				F4653F8C243BB60B00FA120E /* GoogleUtilities.framework in Frameworks */,
 				F48DAA85243B06A400EEADD9 /* MessageUI.framework in Frameworks */,
 				F4653F90243BB60B00FA120E /* nanopb.framework in Frameworks */,
+				F4A7F929247B76A10062DD62 /* StoreKit.framework in Frameworks */,
 				F4E90036243B903800F6CBEE /* UIKit.framework in Frameworks */,
 				F41DC2AB24346AAE008BB1C1 /* Foundation.framework in Frameworks */,
 				F4E90034243B903000F6CBEE /* Speech.framework in Frameworks */,
@@ -129,6 +141,15 @@
 				38FF70C00B82954E616B01C8 /* Pods-VoiceToChat.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F40BC2792486B29400AC6EBE /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				F40BC27A2486B29500AC6EBE /* LoaderView.xib */,
+				F40BC27B2486B29500AC6EBE /* LoaderView.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		F41307BD243774270003AEF0 /* YMUserDefault */ = {
@@ -213,6 +234,8 @@
 		F41DC2A924346AAE008BB1C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F472BB142485165400CB6F19 /* IAPurchaseManager.framework */,
+				F4A7F928247B76A10062DD62 /* StoreKit.framework */,
 				F48076FF245A92F500191816 /* SwiftMessages.bundle */,
 				F48076F8245A925B00191816 /* SwiftMessages.framework */,
 				F4653F86243BB60A00FA120E /* GoogleUtilities.framework */,
@@ -262,6 +285,7 @@
 		F425564E243397CB0002D209 /* VoiceToChat */ = {
 			isa = PBXGroup;
 			children = (
+				F4A7F92C247BF4920062DD62 /* IAPManager */,
 				F41DC2A324344C96008BB1C1 /* Library */,
 				F41DC29D24342750008BB1C1 /* SceneDelegate */,
 				F41DC29C24342740008BB1C1 /* AppDelegate */,
@@ -309,6 +333,16 @@
 				F47FF6752434A84A00C4C379 /* SettingsVC.swift */,
 			);
 			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		F4A7F92C247BF4920062DD62 /* IAPManager */ = {
+			isa = PBXGroup;
+			children = (
+				F40BC2792486B29400AC6EBE /* Loader */,
+				F472BB1B2485196C00CB6F19 /* IAPManager.swift */,
+				F4A7F92A247BF4180062DD62 /* IAP_ProductIDs.plist */,
+			);
+			path = IAPManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +406,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A7F92B247BF4180062DD62 /* IAP_ProductIDs.plist in Resources */,
+				F40BC27C2486B29500AC6EBE /* LoaderView.xib in Resources */,
 				F4653F8F243BB60B00FA120E /* GoogleUtilities-LICENSE in Resources */,
 				F4653F8E243BB60B00FA120E /* OpenMeasurement-LICENSE in Resources */,
 				F4653F8D243BB60B00FA120E /* NanoPB-LICENSE in Resources */,
@@ -431,6 +467,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F472BB1C2485196C00CB6F19 /* IAPManager.swift in Sources */,
+				F40BC27D2486B29500AC6EBE /* LoaderView.swift in Sources */,
 				F47FF6762434A84A00C4C379 /* SettingsVC.swift in Sources */,
 				F4F444AA24351A2A00F028F2 /* UIDeviceExtension.swift in Sources */,
 				F4653F7E243BA3EC00FA120E /* UIViewControllerExtension.swift in Sources */,

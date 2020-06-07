@@ -1,18 +1,22 @@
 PODS:
+  - IAPurchaseManager (0.2.0)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
 
 DEPENDENCIES:
+  - IAPurchaseManager
   - SwiftMessages
 
 SPEC REPOS:
   trunk:
+    - IAPurchaseManager
     - SwiftMessages
 
 SPEC CHECKSUMS:
+  IAPurchaseManager: 2e4678d9dc157627e1f2c4c6e13fd9559f27f3c0
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: e546129a55842af042361e39ffa94a066f202e09
+PODFILE CHECKSUM: 4ecd46315514c6bafc58a1564cd3d602be02b6a6
 
 COCOAPODS: 1.8.4
