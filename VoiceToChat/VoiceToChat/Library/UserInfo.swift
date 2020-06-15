@@ -16,13 +16,13 @@ class UserInfo: NSObject {
     }()
     
     //MARK: - Set/Get Sentences Recognization
-    func getSentencesRecognization() -> Int {
-        if let seconds:Int = UserDefaults.standard.integer(forKey: "SentencesRecognization") as Int? {
+    func getSentencesRecognization() -> Double {
+        if let seconds:Double = UserDefaults.standard.double(forKey: "SentencesRecognization") as Double? {
             return seconds
         }
-        return 0
+        return 0.0
     }
-    func setSentencesRecognization(data: Int) {
+    func setSentencesRecognization(data: Double) {
         
         UserDefaults.standard.set(data, forKey: "SentencesRecognization")
         UserDefaults.standard.synchronize()

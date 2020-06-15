@@ -58,6 +58,15 @@
 		A4E4C258958FFEC1F9596EC7 /* Pods-VoiceToChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceToChat.debug.xcconfig"; path = "Target Support Files/Pods-VoiceToChat/Pods-VoiceToChat.debug.xcconfig"; sourceTree = "<group>"; };
 		F40BC27A2486B29500AC6EBE /* LoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoaderView.xib; sourceTree = "<group>"; };
 		F40BC27B2486B29500AC6EBE /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		F40F7BB82493548B006EB8BB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		F40F7BB92493548B006EB8BB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F40F7BBA2493548B006EB8BB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F40F7BBB24935491006EB8BB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		F40F7BBC24935491006EB8BB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F40F7BBD24935491006EB8BB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F40F7BBE24935496006EB8BB /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Main.strings"; sourceTree = "<group>"; };
+		F40F7BBF24935496006EB8BB /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F40F7BC024935496006EB8BB /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F41307BB243765FD0003AEF0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		F41307BE243774310003AEF0 /* YMUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMUserDefault.swift; sourceTree = "<group>"; };
 		F41307C0243774D70003AEF0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -390,6 +399,9 @@
 				en,
 				Base,
 				ja,
+				"zh-Hans",
+				"zh-Hant",
+				"zh-HK",
 			);
 			mainGroup = F4255643243397CB0002D209;
 			productRefGroup = F425564D243397CB0002D209 /* Products */;
@@ -501,6 +513,9 @@
 				F4255656243397CB0002D209 /* Base */,
 				F42B5054243CC0C3001856DE /* en */,
 				F42B505D243CC89F001856DE /* ja */,
+				F40F7BB82493548B006EB8BB /* zh-Hans */,
+				F40F7BBB24935491006EB8BB /* zh-Hant */,
+				F40F7BBE24935496006EB8BB /* zh-HK */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -510,6 +525,9 @@
 			children = (
 				F425565E243397CD0002D209 /* Base */,
 				F42B505E243CC89F001856DE /* ja */,
+				F40F7BB92493548B006EB8BB /* zh-Hans */,
+				F40F7BBC24935491006EB8BB /* zh-Hant */,
+				F40F7BBF24935496006EB8BB /* zh-HK */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -519,6 +537,9 @@
 			children = (
 				F42B5064243CCE1A001856DE /* en */,
 				F42B5067243CCE66001856DE /* ja */,
+				F40F7BBA2493548B006EB8BB /* zh-Hans */,
+				F40F7BBD24935491006EB8BB /* zh-Hant */,
+				F40F7BC024935496006EB8BB /* zh-HK */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -650,6 +671,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroshi Chin (3RX2RWFJJ4)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7983WL2YNG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -677,6 +699,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hiroshi Chin (3RX2RWFJJ4)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7983WL2YNG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

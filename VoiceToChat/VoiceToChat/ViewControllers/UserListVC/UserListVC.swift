@@ -25,7 +25,6 @@ class UserListVC: UIViewController {
     var arrUserList = [ModelUserList]()
     var db:DBHelper = DBHelper()
     
-    
     var heightBannerView = 0
     
     //TODO: - Override Method
@@ -212,7 +211,7 @@ extension UserListVC {
         
         alertWithTextField(title: "Username".localizeString(), message: "", placeholder: "Enter username".localizeString()) { result in
             
-            if(result.length > 0) {
+            if(result.removeWhiteSpace().length > 0) {
                 let data = ModelUserList.init(strUserName: result, userId: 0)
 
                 //Insert User Info

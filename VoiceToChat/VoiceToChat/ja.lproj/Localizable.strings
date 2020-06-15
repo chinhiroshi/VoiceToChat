@@ -19,6 +19,9 @@
 "Please select language for speech to text" = "スピーチからテキストへの言語を選択してください";
 "Done" = "終わった";
 "seconds" = "秒";
+"Settings" = "設定";
+"Restore Purchses" = "購入を復元";
+"You can't send morethan 50 messages on single day, If you have to send unlimited messages and remove ads, Please buy premium feature" = "1日に50を超えるメッセージを送信することはできません。無制限のメッセージを送信して広告を削除する必要がある場合は、プレミアム機能を購入してください";
 
 //Chat screen
 "Change size" = "サイズを変更";

@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  VoiceToChat
+
+  Created by Shree on 07/04/20.
+  Copyright © 2020 Shree. All rights reserved.
+*/
+
+//Settings screen
+"Speech to text language" = "语音到文字语言";
+"Change language" = "改变语言";
+"Sentence recognition" = "句子识别";
+"Contact" = "联系";
+"Helps" = "有帮助";
+"Buy premium feature" = "购买高级功能";
+"Purchsed premium feature" = "购买的高级功能";
+"Please select language" = "请选择语言";
+"Cancel" = "取消";
+"Please select language for speech to text" = "请选择语言进行语音转文字";
+"Done" = "完成了";
+"seconds" = "秒";
+"Settings" = "设定值";
+"Restore Purchses" = "恢复购买";
+"You can't send morethan 50 messages on single day, If you have to send unlimited messages and remove ads, Please buy premium feature" = "您每天发送的邮件不能超过50条，如果您必须发送无限制的邮件并删除广告，请购买高级功能";
+
+//Chat screen
+"Change size" = "变更尺寸";
+
+//User List
+"Save" = "救";
+"Username" = "用户名";
+"Enter username" = "输入用户名";

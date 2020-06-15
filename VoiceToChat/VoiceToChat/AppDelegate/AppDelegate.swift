@@ -19,8 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let strLang = UserDefaults.Main.string(forKey: .changeLanguage)
         if strLang.count == 0 {
-            let deviceLanguage = Locale.current.languageCode ?? "en"
-            if deviceLanguage == "en" || deviceLanguage == "ja" {
+            
+            var deviceLanguage = Locale.current.languageCode ?? "en"
+            deviceLanguage = deviceLanguage.lowercased()
+            
+            if deviceLanguage == "zh-hans" || deviceLanguage == "zh-hant" || deviceLanguage == "zh-hk" || deviceLanguage == "zh"  {
+                deviceLanguage = "zh-Hans"
+            }
+            
+            if deviceLanguage == "en" || deviceLanguage == "ja" || deviceLanguage == "zh-Hans" {
                 UserDefaults.Main.set(deviceLanguage, forKey: .changeLanguage)
                 UserDefaults.standard.synchronize()
             } else {
@@ -30,9 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let strSpeechToTextLang = UserDefaults.Main.string(forKey: .speechToTextLanguage)
+        var deviceLanguage = Locale.current.languageCode ?? "en"
+        deviceLanguage = deviceLanguage.lowercased()
+        
+        if deviceLanguage == "zh-hans" || deviceLanguage == "zh-hant" || deviceLanguage == "zh-hk" || deviceLanguage == "zh"  {
+            deviceLanguage = "zh-Hans"
+        }
+        print("deviceLanguage : ",deviceLanguage)
+        
         if strSpeechToTextLang.count == 0 {
-            let deviceLanguage = Locale.current.languageCode ?? "en"
-            if deviceLanguage == "en" || deviceLanguage == "ja" {
+            if deviceLanguage == "en" || deviceLanguage == "ja" || deviceLanguage == "zh-Hans" {
                 
                 UserDefaults.Main.set(deviceLanguage, forKey: .speechToTextLanguage)
                 UserDefaults.standard.synchronize()
@@ -71,7 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Memory Initialize Ads View
         //GoogleAdMob.sharedInstance.initializeInterstitial(isLiveUnitID: false)
-        GoogleAdMob.sharedInstance.initializeBannerView(isLiveUnitID: true)
+        let isProductPurchased = IAPManager.shared.isProductPurchased(productId: strInAppPurchase)
+        if isProductPurchased == false {
+            GoogleAdMob.sharedInstance.initializeBannerView(isLiveUnitID: false)
+        }
         
         return true
     }

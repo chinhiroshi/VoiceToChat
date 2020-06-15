@@ -24,6 +24,7 @@ class SettingsVC: UIViewController {
     @IBOutlet var lblSentenceRecognitionCounter: UILabel!
     
     @IBOutlet var controlRestorePurchse: UIControl!
+    @IBOutlet var lblRestorePurchse: UILabel!
     
     @IBOutlet var controlBuyPremiumFeature: UIControl!
     @IBOutlet var lblPriceBuyPremiumFeature: UILabel!
@@ -39,8 +40,8 @@ class SettingsVC: UIViewController {
     @IBOutlet var constraintHeightPickerNumber: NSLayoutConstraint!
     
     //TODO: - Variable Declaration
-    var arrSentenceNumber:[Int] = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-    var secondsForSpeechRecognization = 3
+    var arrSentenceNumber:[Double] = [0.5,1.0,2.0,3.0]
+    var secondsForSpeechRecognization = 0.5
     var loaderView: LoaderView?
     
     //TODO: - Override Methods
@@ -56,7 +57,7 @@ class SettingsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.pickerNumber.selectRow(secondsForSpeechRecognization-3, inComponent: 0, animated: true)
+        self.pickerNumber.selectRow(Int(secondsForSpeechRecognization), inComponent: 0, animated: true)
     }
     func prepareUI() {
         
@@ -72,25 +73,32 @@ class SettingsVC: UIViewController {
         //Update Speech To Text Language
         self.updateSpeechToTextLanguage()
         
+        //Check Device Orientation
+        self.checkDeviceOrientation()
+        
         self.lblSpeechToText.text = "Speech to text language".localizeString()
         self.lblChangeLanguage.text = "Change language".localizeString()
         self.lblSentenceRecognition.text = "Sentence recognition".localizeString()
         self.lblContact.text = "Contact".localizeString()
         self.lblBuyPremiumFeatures.text = "Buy premium feature".localizeString()
+        self.lblRestorePurchse.text = "Restore Purchses".localizeString()
         self.btnDone.setTitle("Done".localizeString(), for: .normal)
         
-        secondsForSpeechRecognization = UserInfo.sharedInstance.getSentencesRecognization()
-        if secondsForSpeechRecognization == 0 {
-           secondsForSpeechRecognization = 3
+        let sentenceReco = UserInfo.sharedInstance.getSentencesRecognization()
+        if sentenceReco == 0.5 {
+            secondsForSpeechRecognization = 0.5
+        } else if sentenceReco == 1.0 {
+            secondsForSpeechRecognization = 1.0
+        } else if sentenceReco == 2.0 {
+            secondsForSpeechRecognization = 2.0
+        } else if sentenceReco == 3.0 {
+            secondsForSpeechRecognization = 3.0
         }
+        
         self.pickerNumber.reloadAllComponents()
         self.lblSentenceRecognitionCounter.text = "\(secondsForSpeechRecognization) " + "seconds".localizeString()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.bannerAdsReceived(notification:)), name: Notification.Name("bannerAdsReceived"), object: nil)
-        
-        if UserDefaults.Main.bool(forKey: .isShowBannerAds) {
-            self.constraintHeightBottomView.constant = 50
-        }
         
         self.lblPriceBuyPremiumFeature.text = ""
         IAPManager.shared.loadProducts(productIds: [strInAppPurchase]) { (products, error) -> Void in
@@ -138,9 +146,59 @@ class SettingsVC: UIViewController {
             lblBuyPremiumFeature.text = "Buy premium feature".localizeString()
         }
     }
+    func checkDeviceOrientation() {
+        
+        var isPortrait = true
+        switch UIDevice.current.orientation {
+        case .portrait:
+            
+            break
+        case .portraitUpsideDown:
+            
+            break
+        case .landscapeLeft:
+            isPortrait = false
+            break
+        case .landscapeRight:
+            isPortrait = false
+            break
+        default:
+            
+            break
+        }
+        //Update Banner Ads Size
+        self.updateBannerAdsSize(isPortrait: isPortrait)
+    }
+    func updateBannerAdsSize(isPortrait:Bool) {
+        
+        if UserDefaults.Main.bool(forKey: .isBannerAdsReceived) {
+            
+            if UserDefaults.Main.bool(forKey: .isRemovedAds) == false {
+                
+                if UserDefaults.Main.bool(forKey: .isShowBannerAds) {
+                    
+                    if isPortrait == true {
+                        constraintHeightBottomView.constant = 50
+                    } else {
+                        if isIphoneXOrLonger == true {
+                            constraintHeightBottomView.constant = 0
+                        } else {
+                            constraintHeightBottomView.constant = 50
+                        }
+                    }
+                } else {
+                    constraintHeightBottomView.constant = 0
+                }
+            } else {
+                constraintHeightBottomView.constant = 0
+            }
+        } else {
+            constraintHeightBottomView.constant = 0
+        }
+    }
     @objc func bannerAdsReceived(notification: Notification) {
         
-        self.constraintHeightBottomView.constant = 50
+        self.checkDeviceOrientation()
     }
     func showSelectSentencePopup(isAnimated:Bool) {
         
@@ -162,8 +220,13 @@ class SettingsVC: UIViewController {
     func updateChangeLanguageText() {
         let strLang = UserDefaults.Main.string(forKey: .changeLanguage)
         
+        
         if strLang == "en" {
             self.lblLangChange.text = "English"
+            
+        } else if strLang == "zh-Hans" {
+            self.lblLangChange.text = "Chinese"
+            
         } else {
             self.lblLangChange.text = "Japanese"
         }
@@ -173,8 +236,13 @@ class SettingsVC: UIViewController {
         let strLang = UserDefaults.Main.string(forKey: .speechToTextLanguage)
         if strLang == "en" {
             self.lblLangSpeechToText.text = "English"
+            
+        } else if strLang == "zh-Hans" {
+            self.lblLangSpeechToText.text = "Chinese"
+            
         } else {
             self.lblLangSpeechToText.text = "Japanese"
+            
         }
     }
     func showChangeLanguagePopup() {
@@ -195,10 +263,19 @@ class SettingsVC: UIViewController {
             //Prepare Data
             self.prepareData()
         })
+        let chinese = UIAlertAction(title: "Chinese", style: .default, handler: { (action) -> Void in
+            
+            UserDefaults.Main.set("zh-Hans", forKey: .changeLanguage)
+            UserDefaults.standard.synchronize()
+            
+            //Prepare Data
+            self.prepareData()
+        })
         let cancel = UIAlertAction(title: "Cancel".localizeString(), style: .cancel) { (action) -> Void in
         }
         dialogMessage.addAction(english)
         dialogMessage.addAction(japanese)
+        dialogMessage.addAction(chinese)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
@@ -220,10 +297,19 @@ class SettingsVC: UIViewController {
             //Update Speech To Text Language
             self.updateSpeechToTextLanguage()
         })
+        let chinese = UIAlertAction(title: "Chinese", style: .default, handler: { (action) -> Void in
+            
+            UserDefaults.Main.set("zh-Hans", forKey: .speechToTextLanguage)
+            UserDefaults.standard.synchronize()
+            
+            //Update Speech To Text Language
+            self.updateSpeechToTextLanguage()
+        })
         let cancel = UIAlertAction(title: "Cancel".localizeString(), style: .cancel) { (action) -> Void in
         }
         dialogMessage.addAction(english)
         dialogMessage.addAction(japanese)
+        dialogMessage.addAction(chinese)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
@@ -391,7 +477,7 @@ extension SettingsVC:UIPickerViewDelegate, UIPickerViewDataSource {
         
         self.lblSentenceRecognitionCounter.text = "\(self.arrSentenceNumber[row]) " + "seconds".localizeString()
         UserInfo.sharedInstance.setSentencesRecognization(data: self.arrSentenceNumber[row])
-        secondsForSpeechRecognization = row
+        secondsForSpeechRecognization = self.arrSentenceNumber[row]
     }
 }
 // MARK: - Show / Hide loader for purchase and restore

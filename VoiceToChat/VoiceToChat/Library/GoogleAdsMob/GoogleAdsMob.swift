@@ -70,7 +70,7 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
             let notchHeight = hasTopNotch == true ? CGFloat(34):CGFloat(0)
             bannerView = GADBannerView(frame: CGRect(
                 x:0 ,
-                y:BannerViewSize.screenHeight - BannerViewSize.height - notchHeight ,
+                y:notchHeight ,
                 width:BannerViewSize.screenWidth ,
                 height:BannerViewSize.height))
             
@@ -147,13 +147,13 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
                 
                     let notchHeight = hasTopNotch == true ? CGFloat(34):CGFloat(0)
                     UIView.animate(withDuration: 0.3, animations: {
-                        self.bannerView.frame = CGRect(x:0 ,y:screenHeight - BannerViewSize.height - notchHeight  ,width:screenWidth ,height:BannerViewSize.height)
+                        self.bannerView.frame = CGRect(x:0 ,y:notchHeight ,width:screenWidth ,height:BannerViewSize.height)
                     })
                     
                 } else {
                     let notchHeight = CGFloat(0)
                     UIView.animate(withDuration: 0.3, animations: {
-                        self.bannerView.frame = CGRect(x:0 ,y:screenWidth - BannerViewSize.height - notchHeight  ,width:screenHeight ,height:BannerViewSize.height)
+                        self.bannerView.frame = CGRect(x:0 ,y:notchHeight ,width:screenHeight ,height:BannerViewSize.height)
                     })
                 }
             }
@@ -170,7 +170,7 @@ class GoogleAdMob:NSObject, GADInterstitialDelegate, GADBannerViewDelegate {
             NotificationCenter.default.post(name: Notification.Name("bannerAdsReceived"), object: nil)
             
             UIView.animate(withDuration: 0.3, animations: {
-                self.bannerView.frame = CGRect(x:0 ,y:BannerViewSize.screenHeight ,width:BannerViewSize.screenWidth ,height:BannerViewSize.height)
+                self.bannerView.frame = CGRect(x:0 ,y:-BannerViewSize.height ,width:BannerViewSize.screenWidth ,height:BannerViewSize.height)
             })
         }
     }

@@ -37,7 +37,7 @@ class ChatVC: UIViewController {
     var arrChatList = [ModelChat]()
     var arrAllChatData = [ModelChatWithDate]()
     
-    var fontSize = Float(17)
+    var fontSize = Float(22)
     var isKeyboardOpen = false
     var strMessagePlaceholder = "Type a message"
     let colorTextMessagePlaceholder = UIColor.gray
@@ -59,8 +59,9 @@ class ChatVC: UIViewController {
     let audioEngine             = AVAudioEngine()
     
     var heightBannerView = 0
-    var secondsForSendMessage = 3
+    var secondsForSendMessage = 0.5
     var timerForSendMessage = Timer()
+    var isChatListUpSide = true
     
     //TODO: - Override Method
     override func viewDidLoad() {
@@ -81,10 +82,11 @@ class ChatVC: UIViewController {
         lblChangeSize.text = "Change size".localizeString()
         
         secondsForSendMessage = UserInfo.sharedInstance.getSentencesRecognization()
-        if secondsForSendMessage == 0 {
-           secondsForSendMessage = 3
+        print("secondsForSendMessage1 : ",secondsForSendMessage)
+        if secondsForSendMessage == 0.0 {
+            secondsForSendMessage = 3.0
         }
-        
+        print("secondsForSendMessage2 : ",secondsForSendMessage)
         let strLang = UserDefaults.Main.string(forKey: .speechToTextLanguage)
         self.speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: strLang))
         //Setup Speech
@@ -361,12 +363,12 @@ class ChatVC: UIViewController {
         self.setKeyboardHeight()
     }
     func showAlertForWarning() {
-        let alert = UIAlertController(title: "Buy Premium Feature", message: "You can't send morethan 50 messages on single day, If you have yo send unlimited messages and remove ads, Please buy premium feature", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Buy Premium Feature".localizeString(), message: "You can't send morethan 50 messages on single day, If you have to send unlimited messages and remove ads, Please buy premium feature", preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Cancel".localizeString(), style: UIAlertAction.Style.default, handler: { _ in
             //Cancel Action
         }))
-        alert.addAction(UIAlertAction(title: "Settings",
+        alert.addAction(UIAlertAction(title: "Settings".localizeString(),
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
                                         
@@ -465,7 +467,24 @@ extension ChatVC {
     }
     @IBAction func tappedOnChangeOrientation(_ sender: Any) {
         
-        UIView.setAnimationsEnabled(false)
+        if isChatListUpSide == true {
+            let transform = CGAffineTransform.identity
+            UIView.animate(withDuration: 0.3, animations: {
+                  // to rotate counterclockwise set both of these in this exact order
+                  self.tblChat.transform = transform.rotated(by: 180 * CGFloat(Double.pi))
+                  self.tblChat.transform = transform.rotated(by: -1 * CGFloat(Double.pi))
+            })
+        } else {
+            let transform = CGAffineTransform.identity
+            UIView.animate(withDuration: 0.3, animations: {
+                  // to rotate counterclockwise set both of these in this exact order
+                  self.tblChat.transform = transform.rotated(by: 360 * CGFloat(Double.pi))
+                  self.tblChat.transform = transform.rotated(by: 0 * CGFloat(Double.pi))
+            })
+        }
+        self.isChatListUpSide = !self.isChatListUpSide
+        
+        /*UIView.setAnimationsEnabled(false)
         //UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         
         switch UIDevice.current.orientation {
@@ -491,7 +510,7 @@ extension ChatVC {
             UIDevice.current.setValue(value, forKey: "orientation")
             break
         }
-        UIView.setAnimationsEnabled(true)
+        UIView.setAnimationsEnabled(true)*/
     }
 }
 
@@ -511,6 +530,11 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate {
         
         let data = self.arrAllChatData[indexPath.section].arrChat[indexPath.row]
         cell.lblMessage.font = UIFont.init(name: "Arial", size: CGFloat(fontSize))
+        if fontSize < 30 {
+            cell.lblTime.font = UIFont.init(name: "Arial", size: CGFloat(fontSize*0.8))
+        } else {
+            cell.lblTime.font = UIFont.init(name: "Arial", size: CGFloat(24))
+        }
         cell.setData(data: data)
         return cell
     }
@@ -560,7 +584,7 @@ extension ChatVC:UITextViewDelegate {
         if UIDevice.current.orientation.isLandscape {
             totalNumberOfLines = 3
         } else {
-            totalNumberOfLines = 7
+            totalNumberOfLines = 3
         }
         if(intNumberOfLines == 1) {
             
@@ -568,7 +592,8 @@ extension ChatVC:UITextViewDelegate {
         } else {
             
             if(intNumberOfLines < totalNumberOfLines) {
-                constraintHeightSendMessageBG.constant = CGFloat((50 + (intNumberOfLines * 14)))
+                constraintHeightSendMessageBG.constant = CGFloat((50 + (intNumberOfLines * 20)))
+                print("intNumberOfLines : \(intNumberOfLines)")
             }
         }
         
@@ -595,7 +620,7 @@ extension ChatVC:UITextViewDelegate {
         
         isKeyboardOpen = true
         controlHideKeyboard.isHidden = false
-        constraintBottomSafeArea.constant = CGFloat(keyboardHeight-heightBannerView)
+        constraintBottomSafeArea.constant = CGFloat(keyboardHeight)
         if textView.textColor == colorTextMessagePlaceholder {
             textView.text = ""
             textView.textColor = colorTextMessage
